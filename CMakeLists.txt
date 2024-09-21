@@ -40,7 +40,6 @@ file(GLOB SOURCES
     main.cpp
 )
 
-
 # Form the test executable
 add_executable(run_test.exe ${SOURCES})
 
