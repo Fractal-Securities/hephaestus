@@ -1,10 +1,12 @@
 #include "../include/Order.h"
 
 // Order Constructor
-Order::Order(const std::string& t, double p, int q)
+Order::Order(const std::string& type, const std::string& side, double p, int q)
 {
 
-    orderType = t;
+    orderType = type;
+
+    orderSide = side;
 
     price = p;
 
@@ -17,6 +19,14 @@ std::string Order::getType() const
 {
 
     return orderType;
+
+}
+
+// Order's Side Accessor
+std::string Order::getSide() const
+{
+
+    return orderSide;
 
 }
 
