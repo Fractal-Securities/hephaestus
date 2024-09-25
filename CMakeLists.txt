@@ -24,12 +24,20 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
-include_directories(${PROJECT_SOURCE_DIR}/core/include ${PROJECT_SOURCE_DIR}/core/src)
+# Include the source code into the project
+include_directories(
+    ${PROJECT_SOURCE_DIR}/types/include
+    ${PROJECT_SOURCE_DIR}/core/include
+    ${PROJECT_SOURCE_DIR}/core/src
+)
+
+# Add the core library
 add_library(CoreLibrary INTERFACE)
 
-
+# Include the required sources for the core library
 target_include_directories(CoreLibrary
     INTERFACE
+    ${PROJECT_SOURCE_DIR}/types/include
     ${PROJECT_SOURCE_DIR}/core/include
 )
 
