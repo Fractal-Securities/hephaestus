@@ -1,10 +1,8 @@
 #include <gtest/gtest.h>
 
-#include <gtest/gtest.h>
-
 #include "../core/include/Order.h"
 
-TEST(OrderTest, CreateMarketOrder)
+TEST(OrderTests, CreateMarketOrder)
 {
 
     // Allocate market Order
@@ -18,7 +16,7 @@ TEST(OrderTest, CreateMarketOrder)
 
 }
 
-TEST(OrderTest, CreateLimitOrder)
+TEST(OrderTests, CreateLimitOrder)
 {
 
     // Allocate limit Order
@@ -32,7 +30,7 @@ TEST(OrderTest, CreateLimitOrder)
 
 }
 
-TEST(OrderTest, CreateBuyOrder)
+TEST(OrderTests, CreateBuyOrder)
 {
 
     // Allocate buy Order
@@ -47,7 +45,7 @@ TEST(OrderTest, CreateBuyOrder)
 }
 
 // Test for creating a sell order
-TEST(OrderTest, CreateSellOrder)
+TEST(OrderTests, CreateSellOrder)
 {
 
     // Allocate sell Order
