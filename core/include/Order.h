@@ -8,11 +8,21 @@ class Order
 
 public:
 
+    // The type of order
+    enum class OrderType
+    {
+
+        Market,
+
+        Limit,
+
+    };
+
     // Order constructor
-    Order(const std::string& type, const std::string& side, double p, int q);
+    Order(const OrderType oType, const std::string& s, double p, int q);
 
     // Order's Type Accessor
-    std::string getType() const;
+    OrderType getType() const;
 
     // Order's Side Accessor
     std::string getSide() const;
@@ -26,7 +36,7 @@ public:
 private:
 
     // The Order's type
-    std::string orderType;
+    OrderType orderType;
 
     // The Order's side
     std::string orderSide;
