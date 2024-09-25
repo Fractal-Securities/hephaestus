@@ -9,6 +9,8 @@ project(CoreEnginer VERSION 0.01)
 set(CMAKE_C_COMPILER "/usr/bin/clang" CACHE STRING "C compiler" FORCE)
 set(CMAKE_CXX_COMPILER "/usr/bin/clang++" CACHE STRING "C++ compiler" FORCE)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_CXX_FLAGS_DEBUG "-O3 -g")
 
 # Set the C++ standard
 set(CMAKE_CXX_STANDARD 17)
@@ -20,22 +22,19 @@ FetchContent_Declare(
   googletest
   URL https://github.com/google/googletest/archive/5376968f6948923e2411081fd9372e71a59d8e77.zip
 )
-
 FetchContent_MakeAvailable(googletest)
 
-# Create the optimized core library
-add_library(CoreLibrary SHARED
-    core/src/Order.cpp
-)
+include_directories(${PROJECT_SOURCE_DIR}/core/include ${PROJECT_SOURCE_DIR}/core/src)
+add_library(CoreLibrary INTERFACE)
+
 
 target_include_directories(CoreLibrary
-    PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    INTERFACE
+    ${PROJECT_SOURCE_DIR}/core/include
 )
 
 # Set the test sources
 file(GLOB SOURCES
-    ${CMAKE_CURRENT_SOURCE_DIR}/core/src/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/test/*.cpp
     main.cpp
 )
