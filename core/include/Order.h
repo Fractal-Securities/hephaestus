@@ -3,16 +3,31 @@
 
 #include <string>
 
+// The type of order
+enum class OrderType : uint8_t
+{
+
+    Market = 1,
+
+    Limit = 2,
+
+};
+
+
+template <typename TYPE, typename SIDE>
 class Order
 {
 
 public:
 
     // Order constructor
-    Order(const std::string& t, double p, int q);
+    constexpr Order(TYPE Type, SIDE side, double p, int q);
 
     // Order's Type Accessor
-    std::string getType() const;
+    constexpr TYPE getType() const;
+
+    // Order's Side Accessor
+    constexpr SIDE getSide() const;
 
     // Order's Price Accessor
     double getPrice() const;
@@ -23,7 +38,10 @@ public:
 private:
 
     // The Order's type
-    std::string orderType;
+    TYPE orderType;
+
+    // The Order's side
+    SIDE orderSide;
 
     // The Order's price
     double price;
@@ -32,5 +50,7 @@ private:
     int quantity;
 
 };
+
+#include "Order.tpp"
 
 #endif /* ORDER_H */
