@@ -5,11 +5,17 @@
 
 #include <functional>
 
-template <typename T, typename COMPARE = std::less<T>>
+template <typename T, typename Compare>
 class PriorityQueue
 {
 
 public:
+
+    // PriorityQueue constructor
+    PriorityQueue();
+
+    // Heap accessor method
+    const std::vector<T>& getHeap() const;
 
     // Method for inserting value
     void push(const T& value);
@@ -29,14 +35,13 @@ private:
     std::vector<T> heap;
 
     // The comparison function
-    COMPARE comp;
+    Compare comp;
 
-    // Method for handling value insertion
-    void Up(T value);
-
-    // Method for handling value deletion
-    void Down(T value);
+    // The heap's size
+    ssize_t hSize;
 
 };
+
+#include "PriorityQueue.tpp"
 
 #endif /* PRIORITY_QUEUE_H */
