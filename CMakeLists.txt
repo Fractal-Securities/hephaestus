@@ -27,6 +27,7 @@ FetchContent_MakeAvailable(googletest)
 # Include the source code into the project
 include_directories(
     ${PROJECT_SOURCE_DIR}/types/include
+    ${PROJECT_SOURCE_DIR}/types/src
     ${PROJECT_SOURCE_DIR}/core/include
     ${PROJECT_SOURCE_DIR}/core/src
 )
