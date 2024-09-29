@@ -1,19 +1,29 @@
 #include "PriorityQueue.h"
 
-template <typename T, typename Compare>
-PriorityQueue<T, Compare>::PriorityQueue()
-    : heap(), comp(Compare())
+template <typename T, typename C>
+PriorityQueue<T, C>::PriorityQueue()
+    : heap(), compare(C())
 {
 
-    std::make_heap(heap.begin(), heap.end(), comp);
+    std::make_heap(heap.begin(), heap.end(), compare);
 
     hSize = 0;
 
 }
 
+template <typename T, typename C>
+PriorityQueue<T, C>::PriorityQueue(C compare)
+    : heap(), compare(compare)
+{
 
-template <typename T, typename Compare>
-const std::vector<T>& PriorityQueue<T, Compare>::getHeap() const
+    std::make_heap(heap.begin(), heap.end(), compare);
+
+    hSize = 0;
+
+}
+
+template <typename T, typename C>
+const std::vector<T>& PriorityQueue<T, C>::getHeap() const
 {
 
     // Return the heap
@@ -21,23 +31,23 @@ const std::vector<T>& PriorityQueue<T, Compare>::getHeap() const
 
 }
 
-template <typename T, typename Compare>
-void PriorityQueue<T, Compare>::push(const T& value) 
+template <typename T, typename C>
+void PriorityQueue<T, C>::push(const T& value) 
 {
 
     // Insert the value into the heap
     heap.push_back(value);
 
     // Heapify the vector back into the proper heap
-    std::push_heap(heap.begin(), heap.end(), comp);
+    std::push_heap(heap.begin(), heap.end(), compare);
 
     // Increment the heap size
     ++hSize;
 
 }
 
-template <typename T, typename Compare>
-T PriorityQueue<T, Compare>::pop() 
+template <typename T, typename C>
+T PriorityQueue<T, C>::pop() 
 {
 
     T top = -1;
@@ -47,7 +57,7 @@ T PriorityQueue<T, Compare>::pop()
 
     top = heap[0];
 
-    std::pop_heap(heap.begin(), heap.end(), comp);
+    std::pop_heap(heap.begin(), heap.end(), compare);
 
     heap.pop_back();
 
@@ -57,8 +67,8 @@ T PriorityQueue<T, Compare>::pop()
 
 }
 
-template <typename T, typename Compare>
-T PriorityQueue<T, Compare>::top() const
+template <typename T, typename C>
+T PriorityQueue<T, C>::top() const
 {
 
     T top = -1;
@@ -70,8 +80,8 @@ T PriorityQueue<T, Compare>::top() const
 
 }
 
-template <typename T, typename Compare>
-bool PriorityQueue<T, Compare>::isEmpty() const
+template <typename T, typename C>
+bool PriorityQueue<T, C>::isEmpty() const
 {
 
     return hSize == 0;
