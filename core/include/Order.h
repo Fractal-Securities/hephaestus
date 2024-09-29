@@ -48,6 +48,9 @@ private:
 
     // The Order's volume to be traded
     int quantity;
+    
+    // The Order's time stamp
+    long orderTime;
 
 };
 

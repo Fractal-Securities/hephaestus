@@ -1,10 +1,14 @@
 #include "Order.h"
 
+#include <chrono>
+
 // Order Constructor
 template <typename TYPE, typename SIDE>
 constexpr Order<TYPE, SIDE>::Order(TYPE type, SIDE side, double p, int q)
     : orderType(type), orderSide(side)
 {
+
+    orderTime = (int64_t)std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
 
     price = p;
 
