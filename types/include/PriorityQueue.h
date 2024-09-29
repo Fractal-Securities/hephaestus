@@ -5,7 +5,7 @@
 
 #include <functional>
 
-template <typename T, typename Compare>
+template <typename T, typename C>
 class PriorityQueue
 {
 
@@ -13,6 +13,7 @@ public:
 
     // PriorityQueue constructor
     PriorityQueue();
+    PriorityQueue(C compare);
 
     // Heap accessor method
     const std::vector<T>& getHeap() const;
@@ -35,7 +36,7 @@ private:
     std::vector<T> heap;
 
     // The comparison function
-    Compare comp;
+    C compare;
 
     // The heap's size
     ssize_t hSize;

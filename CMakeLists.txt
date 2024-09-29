@@ -44,6 +44,7 @@ target_include_directories(CoreLibrary
 
 # Set the test sources
 file(GLOB SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/core/src/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/test/*.cpp
     main.cpp
 )

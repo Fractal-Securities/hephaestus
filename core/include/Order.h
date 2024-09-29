@@ -9,25 +9,32 @@ enum class OrderType : uint8_t
 
     Market = 1,
 
-    Limit = 2,
+    Limit = 2
 
 };
 
+enum class OrderSide : uint8_t
+{
 
-template <typename TYPE, typename SIDE>
+    Buy = 1,
+
+    Sell = 2
+
+};
+
 class Order
 {
 
 public:
 
     // Order constructor
-    constexpr Order(TYPE Type, SIDE side, double p, int q);
+    Order(OrderType Type, OrderSide OrderSide, double p, int q);
 
     // Order's Type Accessor
-    constexpr TYPE getType() const;
+    OrderType getType() const;
 
-    // Order's Side Accessor
-    constexpr SIDE getSide() const;
+    // Order's OrderSide Accessor
+    OrderSide getSide() const;
 
     // Order's Price Accessor
     double getPrice() const;
@@ -35,25 +42,23 @@ public:
     // Order's Quantity Accessor
     int getQuantity() const;
 
+    // The Order's price
+    double price;
+
+    // The Order's time stamp
+    int64_t time;
+
 private:
 
     // The Order's type
-    TYPE orderType;
+    OrderType orderType;
 
-    // The Order's side
-    SIDE orderSide;
-
-    // The Order's price
-    double price;
+    // The Order's OrderSide
+    OrderSide orderSide;
 
     // The Order's volume to be traded
     int quantity;
     
-    // The Order's time stamp
-    long orderTime;
-
 };
-
-#include "Order.tpp"
 
 #endif /* ORDER_H */
