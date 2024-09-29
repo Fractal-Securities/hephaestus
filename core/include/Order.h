@@ -61,6 +61,4 @@ private:
     
 };
 
-#include "Order.tpp"
-
 #endif /* ORDER_H */
